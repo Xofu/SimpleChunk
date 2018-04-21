@@ -1,0 +1,133 @@
+#SimpleChunk 1.0
+#Made by Xofu/Eliaous :)
+
+#The world claiming should be allowed in
+world: "world"
+
+#Determines if the first chunk should be free or not
+First_claim_free: true
+
+#The price for claiming chunks
+Claim_price: 5000
+
+#The amount you get back after unclaiming a chunk
+Claim_refund: 2500
+
+#The max amount of chunks you can claim if you're not in a group that allows you to claim more
+Max_claims_default: 10
+
+#Determines if claim selling should be allowed or not
+Claim_selling: true
+
+#Having this to false will send the chunk-enter message in the chat instead of in a title
+Title_messages: true
+
+#Determines if interacting with wilderness (destorying blocks, placing blocks etc) should be allowed or not
+Interact_with_wilderness: true
+
+#Determines if explosions inside chunks should destroy blocks or not
+Explode_inside_claim: false
+
+#Determines if torches should summon in each corner of chunks when they get claimed
+Spawn_torches: true
+
+#Messages
+COMMAND_USAGE: '&cUsage: %usage%'
+NOT_CLAIMED: '&cThis chunk is not claimed'
+NOT_YOUR_CLAIM: '&cThis is not your claim'
+CANNOT_ALLOW_YOURSELF: '&cYou cannot allow yourself'
+PLAYER_NOT_ONLINE: "&c'%player%' is not online"
+PLAYER_ALREADY_ALLOWED: '&c%player% is already allowed'
+PLAYER_ALLOWED: '&a%player% is now allowed to this plot'
+NOT_FORSALE: '&cThis claim is not forsale'
+CANNOT_BUY_OWN_CLAIM: '&cYou cannot buy your own claim'
+TOO_MANY_CLAIMS: '&cYou have reached your claim limit at %limit%'
+NOT_ENOUGH_MONEY: '&cYou do not have enough money to buy this claim'
+BOUGHT_CLAIM: '&aYou have successfully bought this claim for %price%$'
+ALREADY_CLAIMED: '&cThis chunk is already claimed'
+CHUNK_CLAIMED_FOR: '&aYou have successfully claimed this chunk for %price%$'
+CHUNK_CLAIMED: '&aYou have successfully claimed this chunk'
+PLAYER_NOT_ALLOWED: "&c'%player%' is not allowed"
+PLAYER_DISALLOWED: '&a%player% is no longer allowed to this plot'
+CLAIM_SELLING_DISABLED: '&cClaim selling is disabled'
+NOT_AN_AMOUNT: "&c'%amount%' is not an amount"
+ALREADY_FORSALE: '&cThis claim is already forsale'
+CLAIM_FORSALE: '&aThis claim is now forsale for %price%$'
+CLAIM_FORSALE_CANCELLED: '&aThis claim is no longer forsale'
+CHUNK_UNCLAIMED: '&aYou have successfully unclaimed this chunk'
+CHUNK_UNCLAIMED_AND_REFUNDED: '&aYou have successfully unclaimed this chunk and got refunded %refund%$'
+NOT_A_PLAYER: '&cYou need to be a player to execute this command'
+NO_PERMISSION: '&cYou do not have permission to execute this command'
+CHUNK_CLAIMED_FOR_SERVER: '&aYou have successfully claimed this chunk for the server'
+NO_CLAIMS: '&cThere is no claims on the server'
+ALL_CLAIMS_PURGED: '&aYou have successfully purged all claims on the server'
+CANNOT_PURGE_SERVER: '&cYou cannot purge a server claim'
+CLAIM_PURGED: '&aYou have successfully purged this claim'
+PLAYER_HAS_NO_CLAIMS: "&c'%player%' does not have any claims"
+PLAYER_CLAIMS_PURGED: "&aYou have successfully purged %player%'s claims"
+NOT_A_GROUP: "&c'%group%' is not a group"
+GROUP_MAXCLAIMS_SET: "&aYou have successfully set the group %group%'s maxclaims to %amount%"
+CLAIM_PRICE_SET: '&aYou have successfully set the claim price to %price%$'
+CLAIM_REFUND_SET: '&aYou have successfully set the claim refund to %refund%$'
+NOT_TRUE_OR_FALSE: "&c'%args%' does not equal to either true or false"
+CLAIM_SELLING_SET: '&aYou have successfully set claim selling to %state%'
+NOT_SERVER_CLAIM: '&cThis claim is not a server claim'
+CHUNK_UNCLAIMED_FROM_SERVER: '&aYou have successfully unclaimed this chunk from the server'
+ENTERING_WILDERNESS: '&7Wilderness'
+ENTERING_CLAIM: '&a%owner%'
+ENTERING_SERVER: '&5Server'
+ENTERING_FORSALE_CLAIM: '&a%owner% &e[FORSALE] %price%$'
+DONT_OWN_ANY_CLAIMS: '&cYou do not own any claims'
+CANT_DO_THAT: '&cYou cannot do that inside this claim'
+NOT_IN_CLAIM_WORLD: '&cYou cannot claim in this world'
+
+WILDERNESS_NAME: '&7Wilderness'
+SERVER_NAME: '&5Server'
+
+CHUNK_HELP:
+  - '&7&m------------------------------'
+  - '&aChunk Help &7| &a1/1'
+  - '&7&m------------------------------'
+  - '&7/chunk claim'
+  - '&7/chunk unclaim'
+  - '&7/chunk allow <player>'
+  - '&7/chunk disallow <player>'
+  - '&7/chunk sell <price:cancel>'
+  - '&7/chunk buy'
+  - '&7/chunk list'
+  - '&7/chunk info'
+  - '&7&m------------------------------'
+
+SIMPLECHUNK_HELP:
+  - '&7&m------------------------------'
+  - '&aSimpleChunk Help &7| &a1/1'
+  - '&aTotal claims: &8%claims%'
+  - '&7&m------------------------------'
+  - '&7/simplechunk claim'
+  - '&7/simplechunk unclaim'
+  - '&7/simplechunk setprice <price>'
+  - '&7/simplechunk setrefund <refund>'
+  - '&7/simplechunk setmaxclaims <group> <amount>'
+  - '&7/simplechunk setsale <true:false>'
+  - '&7/simplechunk purgeclaim'
+  - '&7/simplechunk purgeplayer <player>'
+  - '&7/simplechunk purgeall'
+  - '&7&m------------------------------'
+
+CHUNK_INFO:
+  - '&7&m------------------------------'
+  - '&aChunk Information'
+  - '&7&m------------------------------'
+  - '&7ID: &a%id%'
+  - '&7Owner: &a%owner%'
+  - '&7Members: &a%members%'
+  - '&7&m------------------------------'
+
+CHUNK_LIST:
+  - '&7&m------------------------------'
+  - '&aChunk List'
+  - '&aOwned chunks: &8%claims%'
+  - '&7&m------------------------------'
+  - '&7%id% (&a%x%&7, &a%z%&7)'
+  - '&7&m------------------------------'
+

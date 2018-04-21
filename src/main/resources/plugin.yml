@@ -1,0 +1,9 @@
+main: me.xofu.simplechunk.SimpleChunk
+name: SimpleChunk
+version: 1.0
+depend: [Vault]
+
+commands:
+  chunk:
+    aliases: [plot]
+  simplechunk:
