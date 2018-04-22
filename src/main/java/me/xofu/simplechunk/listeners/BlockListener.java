@@ -74,26 +74,26 @@ public class BlockListener implements Listener {
     public void onBlockIgnite(BlockIgniteEvent event) {
         Player player = event.getPlayer();
 
-        if(player.hasPermission("chunk.bypass")) {
+        if(event.getCause() == BlockIgniteEvent.IgniteCause.FLINT_AND_STEEL && player.hasPermission("chunk.bypass")) {
             return;
         }
 
         if(!instance.getClaimManager().isClaimed(event.getBlock().getChunk())) {
             if(!instance.getConfig().getBoolean("Interact_with_wilderness")) {
                 event.setCancelled(true);
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("CANT_DO_THAT")));
                 return;
             }
             return;
         }
 
         Claim claim = instance.getClaimManager().getClaimAt(event.getBlock().getLocation());
-        if(Bukkit.getPlayer(claim.getOwner()) == player || claim.getAllowedPlayers().contains(player.getUniqueId())) {
-            return;
+        if(event.getCause() == BlockIgniteEvent.IgniteCause.FLINT_AND_STEEL) {
+            if (Bukkit.getPlayer(claim.getOwner()) == player || claim.getAllowedPlayers().contains(player.getUniqueId())) {
+                return;
+            }
         }
 
         event.setCancelled(true);
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("CANT_DO_THAT")));
     }
 
     @EventHandler
