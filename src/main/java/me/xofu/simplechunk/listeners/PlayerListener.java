@@ -5,6 +5,7 @@ import me.xofu.simplechunk.claim.Claim;
 import me.xofu.simplechunk.title.TitleMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
+import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
@@ -13,10 +14,7 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
 import org.bukkit.event.entity.EntityBreakDoorEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
-import org.bukkit.event.player.PlayerBucketEmptyEvent;
-import org.bukkit.event.player.PlayerBucketEvent;
-import org.bukkit.event.player.PlayerBucketFillEvent;
-import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -82,7 +80,76 @@ public class PlayerListener implements Listener {
     }
 
     @EventHandler
-    public void onMove(PlayerMoveEvent event) {
+    public void onPlayerInteract(PlayerInteractEvent event) {
+        Player player = event.getPlayer();
+
+        if(event.getAction() != Action.RIGHT_CLICK_BLOCK && event.getAction() != Action.PHYSICAL) {
+            return;
+        }
+
+        Block block = event.getClickedBlock();
+
+        if(event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+            int blockId = block.getTypeId();
+            if (blockId != 64 &&
+                    blockId != 96 &&
+                    blockId != 107 &&
+                    blockId != 77 &&
+                    blockId != 69 &&
+                    blockId != 54 &&
+                    blockId != 61 &&
+                    blockId != 62 &&
+                    blockId != 23 &&
+                    blockId != 117 &&
+                    blockId != 193 &&
+                    blockId != 194 &&
+                    blockId != 195 &&
+                    blockId != 196 &&
+                    blockId != 197 &&
+                    blockId != 146 &&
+                    blockId != 145 &&
+                    blockId != 149 &&
+                    blockId != 150 &&
+                    blockId != 151 &&
+                    blockId != 154 &&
+                    blockId != 158) {
+                return;
+            }
+        }else{
+            if(block.getType() != Material.WOOD_PLATE &&
+                    block.getType() != Material.STONE_PLATE &&
+                    block.getType() != Material.GOLD_PLATE &&
+                    block.getType() != Material.IRON_PLATE) {
+                return;
+            }
+        }
+
+        if(player.hasPermission("chunk.bypass")) {
+            return;
+        }
+
+        if(!instance.getClaimManager().isClaimed(block.getChunk())) {
+            if(!instance.getConfig().getBoolean("Interact_with_wilderness")) {
+                event.setCancelled(true);
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("CANT_DO_THAT")));
+                return;
+            }
+            return;
+        }
+
+        Claim claim = instance.getClaimManager().getClaimAt(block.getLocation());
+        if(Bukkit.getPlayer(claim.getOwner()) == player || claim.getAllowedPlayers().contains(player.getUniqueId())) {
+            return;
+        }
+
+        event.setCancelled(true);
+        if(event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("CANT_DO_THAT")));
+        }
+    }
+
+    @EventHandler
+    public void onPlayerMove(PlayerMoveEvent event) {
         Player player = event.getPlayer();
 
         if (instance.getClaimManager().getClaimAt(event.getTo()) == instance.getClaimManager().getClaimAt(event.getFrom())) {

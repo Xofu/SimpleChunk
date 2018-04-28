@@ -42,7 +42,7 @@ public class ChunkDisallowCommand extends SubCommand {
             return;
         }
 
-        OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
+        OfflinePlayer target = instance.getServer().getOfflinePlayer(args[1]);
         if(!claim.getAllowedPlayers().contains(target.getUniqueId())) {
             player.sendMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("PLAYER_NOT_ALLOWED").replace("%player%", target.getName())));
             return;

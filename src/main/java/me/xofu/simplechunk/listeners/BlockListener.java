@@ -101,11 +101,13 @@ public class BlockListener implements Listener {
         Claim claim = instance.getClaimManager().getClaimAt(event.getBlock().getLocation());
         Claim toClaim = instance.getClaimManager().getClaimAt(event.getToBlock().getLocation());
 
+
         if(claim == toClaim) {
             return;
         }
 
         if(claim == null && toClaim != null) {
+            event.setCancelled(true);
             return;
         }
 

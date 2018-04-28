@@ -1,4 +1,4 @@
-#SimpleChunk 1.1
+#SimpleChunk 1.2
 #Made by Xofu/Eliaous :)
 
 #The world claiming should be allowed in
@@ -38,7 +38,7 @@ NOT_YOUR_CLAIM: '&cThis is not your claim'
 CANNOT_ALLOW_YOURSELF: '&cYou cannot allow yourself'
 PLAYER_NOT_ONLINE: "&c'%player%' is not online"
 PLAYER_ALREADY_ALLOWED: '&c%player% is already allowed'
-PLAYER_ALLOWED: '&a%player% is now allowed to this plot'
+PLAYER_ALLOWED: '&a%player% is now allowed to this claim'
 NOT_FORSALE: '&cThis claim is not forsale'
 CANNOT_BUY_OWN_CLAIM: '&cYou cannot buy your own claim'
 TOO_MANY_CLAIMS: '&cYou have reached your claim limit at %limit%'
@@ -48,7 +48,7 @@ ALREADY_CLAIMED: '&cThis chunk is already claimed'
 CHUNK_CLAIMED_FOR: '&aYou have successfully claimed this chunk for %price%$'
 CHUNK_CLAIMED: '&aYou have successfully claimed this chunk'
 PLAYER_NOT_ALLOWED: "&c'%player%' is not allowed"
-PLAYER_DISALLOWED: '&a%player% is no longer allowed to this plot'
+PLAYER_DISALLOWED: '&a%player% is no longer allowed to this claim'
 CLAIM_SELLING_DISABLED: '&cClaim selling is disabled'
 NOT_AN_AMOUNT: "&c'%amount%' is not an amount"
 ALREADY_FORSALE: '&cThis claim is already forsale'
