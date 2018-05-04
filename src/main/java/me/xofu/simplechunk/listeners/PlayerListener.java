@@ -174,20 +174,20 @@ public class PlayerListener implements Listener {
 
         if(claim.isForsale()) {
             if(title) {
-                new TitleMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("ENTERING_FORSALE_CLAIM")).replace("%owner%", Bukkit.getPlayer(claim.getOwner()).getName()).replace("%price%", String.valueOf(claim.getPrice()))).send(player, 10, 10, 10);
+                new TitleMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("ENTERING_FORSALE_CLAIM")).replace("%owner%", instance.getServer().getOfflinePlayer(claim.getOwner()).getName()).replace("%price%", String.valueOf(claim.getPrice()))).send(player, 10, 10, 10);
                 return;
             }
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("ENTERING_FORSALE_CLAIM").replace("%owner%", Bukkit.getPlayer(claim.getOwner()).getName()).replace("%price%", String.valueOf(claim.getPrice()))));
+            player.sendMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("ENTERING_FORSALE_CLAIM").replace("%owner%", instance.getServer().getOfflinePlayer(claim.getOwner()).getName()).replace("%price%", String.valueOf(claim.getPrice()))));
             return;
         }
 
         if(lastClaim == null) {
             if(!claim.isServer()) {
                 if(title) {
-                    new TitleMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("ENTERING_CLAIM")).replace("%owner%", Bukkit.getPlayer(claim.getOwner()).getName())).send(player, 10, 10, 10);
+                    new TitleMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("ENTERING_CLAIM")).replace("%owner%", instance.getServer().getOfflinePlayer(claim.getOwner()).getName())).send(player, 10, 10, 10);
                     return;
                 }
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("ENTERING_CLAIM")).replace("%owner%", Bukkit.getPlayer(claim.getOwner()).getName()));
+                player.sendMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("ENTERING_CLAIM")).replace("%owner%", instance.getServer().getOfflinePlayer(claim.getOwner()).getName()));
                 return;
             }
             if(title) {
@@ -212,9 +212,9 @@ public class PlayerListener implements Listener {
         }
 
         if(title) {
-            new TitleMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("ENTERING_CLAIM")).replace("%owner%", Bukkit.getPlayer(claim.getOwner()).getName())).send(player, 10, 10, 10);
+            new TitleMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("ENTERING_CLAIM")).replace("%owner%", instance.getServer().getOfflinePlayer(claim.getOwner()).getName())).send(player, 10, 10, 10);
             return;
         }
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("ENTERING_CLAIM")).replace("%owner%", Bukkit.getPlayer(claim.getOwner()).getName()));
+        player.sendMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("ENTERING_CLAIM")).replace("%owner%", instance.getServer().getOfflinePlayer(claim.getOwner()).getName()));
     }
 }

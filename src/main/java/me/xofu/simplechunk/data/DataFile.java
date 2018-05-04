@@ -21,12 +21,12 @@ public class DataFile {
         this.name = name;
         this.file = new File(instance.getDataFolder(), name);
 
-        if (!this.file.exists()) {
-            this.file.getParentFile().mkdirs();
+        if(!file.exists()) {
+            file.mkdirs();
 
-            if (instance.getResource(name) == null) {
+            if(instance.getResource(name) == null) {
                 try {
-                    this.file.createNewFile();
+                    file.createNewFile();
                 }catch (IOException e) {
                     e.printStackTrace();
                 }
@@ -34,7 +34,7 @@ public class DataFile {
                 instance.saveResource(name, false);
             }
         }
-        this.config = YamlConfiguration.loadConfiguration(this.file);
+        config = YamlConfiguration.loadConfiguration(file);
     }
 
     public FileConfiguration getConfig() {
@@ -43,7 +43,7 @@ public class DataFile {
 
     public void save() {
         try {
-            this.getConfig().save(file);
+            getConfig().save(file);
         }catch(IOException e) {
             e.printStackTrace();
         }
