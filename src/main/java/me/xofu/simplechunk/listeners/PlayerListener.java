@@ -112,7 +112,32 @@ public class PlayerListener implements Listener {
                     blockId != 150 &&
                     blockId != 151 &&
                     blockId != 154 &&
-                    blockId != 158) {
+                    blockId != 158 &&
+                    blockId != 219 &&
+                    blockId != 220 &&
+                    blockId != 221 &&
+                    blockId != 222 &&
+                    blockId != 223 &&
+                    blockId != 224 &&
+                    blockId != 225 &&
+                    blockId != 226 &&
+                    blockId != 227 &&
+                    blockId != 228 &&
+                    blockId != 229 &&
+                    blockId != 230 &&
+                    blockId != 231 &&
+                    blockId != 232 &&
+                    blockId != 233 &&
+                    blockId != 234 &&
+                    blockId != 116 &&
+                    blockId != 390 &&
+                    blockId != 356 &&
+                    blockId != 404 &&
+                    blockId != 389 &&
+                    blockId != 342 &&
+                    blockId != 408 &&
+                    blockId != 379 &&
+                    blockId != 138) {
                 return;
             }
         }else{

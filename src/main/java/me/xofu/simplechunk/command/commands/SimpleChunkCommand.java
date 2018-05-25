@@ -23,7 +23,9 @@ public class SimpleChunkCommand extends Command {
                 .addSubCommand(new SimpleChunkPurgeClaimCommand(instance))
                 .addSubCommand(new SimpleChunkPurgePlayerCommand(instance))
                 .addSubCommand(new SimpleChunkPurgeAllCommand(instance))
-                .addSubCommand(new SimpleChunkSetRefundCommand(instance));
+                .addSubCommand(new SimpleChunkSetRefundCommand(instance))
+                .addSubCommand(new SimpleChunkSetOwnerCommand(instance))
+                .addSubCommand(new SimpleChunkReloadCommand(instance));
     }
 
     @Override

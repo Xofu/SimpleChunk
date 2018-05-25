@@ -1,4 +1,4 @@
-#SimpleChunk 1.2.1
+#SimpleChunk 1.3
 #Made by Xofu/Eliaous :)
 
 #The world claiming should be allowed in
@@ -80,6 +80,10 @@ ENTERING_FORSALE_CLAIM: '&a%owner% &e[FORSALE] %price%$'
 DONT_OWN_ANY_CLAIMS: '&cYou do not own any claims'
 CANT_DO_THAT: '&cYou cannot do that inside this claim'
 NOT_IN_CLAIM_WORLD: '&cYou cannot claim in this world'
+CANNOT_CHANGE_OWNER_SERVERCLAIM: '&cYou cannot change the owner of a server claim'
+CHUNK_OWNER_CHANGED: '&a%player% is now the owner of this chunk'
+PLAYER_NOT_ONLINE: "&c'%player%' is not online"
+CONFIG_RELOADED: '&aThe config has been reloaded'
 
 WILDERNESS_NAME: '&7Wilderness'
 SERVER_NAME: '&5Server'
@@ -105,13 +109,15 @@ SIMPLECHUNK_HELP:
   - '&7&m------------------------------'
   - '&7/simplechunk claim'
   - '&7/simplechunk unclaim'
+  - '&7/simplechunk setowner <player>'
   - '&7/simplechunk setprice <price>'
-  - '&7/simplechunk setrefund <refund>'
+  - '&7/simplechunk setrefund <amount>'
   - '&7/simplechunk setmaxclaims <group> <amount>'
   - '&7/simplechunk setsale <true:false>'
   - '&7/simplechunk purgeclaim'
   - '&7/simplechunk purgeplayer <player>'
   - '&7/simplechunk purgeall'
+  - '&7/simplechunk reload'
   - '&7&m------------------------------'
 
 CHUNK_INFO:

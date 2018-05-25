@@ -11,8 +11,8 @@ public class DataFile {
 
     private SimpleChunk instance;
 
-    private String name;
-    private File file;
+    public String name;
+    public File file;
     private FileConfiguration config;
 
     public DataFile(String name, SimpleChunk instance) {
@@ -21,20 +21,20 @@ public class DataFile {
         this.name = name;
         this.file = new File(instance.getDataFolder(), name);
 
-        if(!file.exists()) {
-            file.mkdirs();
+        if (!this.file.exists()) {
+            this.file.getParentFile().mkdirs();
 
-            if(instance.getResource(name) == null) {
+            if (instance.getResource(name) == null) {
                 try {
-                    file.createNewFile();
-                }catch (IOException e) {
+                    this.file.createNewFile();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
-            }else {
+            } else {
                 instance.saveResource(name, false);
             }
         }
-        config = YamlConfiguration.loadConfiguration(file);
+        this.config = YamlConfiguration.loadConfiguration(this.file);
     }
 
     public FileConfiguration getConfig() {
@@ -43,7 +43,7 @@ public class DataFile {
 
     public void save() {
         try {
-            getConfig().save(file);
+            this.getConfig().save(file);
         }catch(IOException e) {
             e.printStackTrace();
         }

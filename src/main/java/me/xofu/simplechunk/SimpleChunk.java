@@ -5,10 +5,12 @@ import me.xofu.simplechunk.claim.ClaimManager;
 import me.xofu.simplechunk.command.CommandManager;
 import me.xofu.simplechunk.command.commands.ChunkCommand;
 import me.xofu.simplechunk.command.commands.SimpleChunkCommand;
+import me.xofu.simplechunk.data.FileManager;
 import me.xofu.simplechunk.listeners.BlockListener;
 import me.xofu.simplechunk.listeners.EntityListener;
 import me.xofu.simplechunk.listeners.PlayerListener;
 import me.xofu.simplechunk.listeners.VehichleListener;
+import me.xofu.simplechunk.task.TaskManager;
 import net.milkbowl.vault.economy.Economy;
 import net.milkbowl.vault.permission.Permission;
 import org.bukkit.Bukkit;
@@ -18,16 +20,20 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class SimpleChunk extends JavaPlugin {
 
+    private FileManager fileManager;
     private ClaimManager claimManager;
     private CommandManager commandManager;
+    private TaskManager taskManager;
 
     private Economy economy = null;
     private Permission permission = null;
 
     @Override
     public void onEnable() {
+        fileManager = new FileManager(this);
         claimManager = new ClaimManager(this);
         commandManager = new CommandManager(this);
+        taskManager = new TaskManager(this);
 
         registerCommands();
         registerListeners();
@@ -57,9 +63,13 @@ public class SimpleChunk extends JavaPlugin {
         pm.registerEvents(new VehichleListener(this), this);
     }
 
+    public FileManager getFileManager() { return fileManager; }
+
     public ClaimManager getClaimManager() {
         return claimManager;
     }
+
+    public TaskManager getTaskManager() { return taskManager; }
 
     public Economy getEconomy() {
         return economy;

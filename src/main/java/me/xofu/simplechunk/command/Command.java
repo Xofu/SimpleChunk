@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Command implements CommandExecutor, TabCompleter {
+public abstract class Command implements CommandExecutor {
 
     private SimpleChunk instance;
 
@@ -49,13 +49,6 @@ public abstract class Command implements CommandExecutor, TabCompleter {
         }
         onCommand(sender, args);
         return false;
-    }
-
-    @Override
-    public List<String> onTabComplete(CommandSender sender, org.bukkit.command.Command command, String string, String[] args) {
-        List<String> list = new ArrayList<>();
-        subCommands.forEach(subCommand -> list.add(subCommand.getName()));
-        return list;
     }
 
     public abstract void onCommand(CommandSender sender, String[] args);

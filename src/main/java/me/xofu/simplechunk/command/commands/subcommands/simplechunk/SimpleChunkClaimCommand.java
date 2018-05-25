@@ -45,7 +45,8 @@ public class SimpleChunkClaimCommand extends SubCommand {
             return;
         }
 
-        Claim claim = new Claim(UUID.fromString("00000000-0000-0000-0000-000000000000") ,player.getLocation().getChunk(), true);
+        UUID uuid = UUID.fromString("00000000-0000-0000-0000-000000000000");
+        Claim claim = new Claim(uuid, player.getLocation().getChunk(), true);
         instance.getClaimManager().addClaim(claim);
 
         player.sendMessage(ChatColor.translateAlternateColorCodes('&', instance.getConfig().getString("CHUNK_CLAIMED_FOR_SERVER")));

@@ -14,16 +14,11 @@ import java.util.*;
 public class ClaimManager {
 
     private SimpleChunk instance;
-
-    private DataFile claimsFile;
-    private FileConfiguration claimsConfig;
     private List<Claim> claims;
 
     public ClaimManager(SimpleChunk instance) {
         this.instance = instance;
 
-        claimsFile = new DataFile("claims.yml", instance);
-        claimsConfig = claimsFile.getConfig();
         claims = new ArrayList<>();
 
         load();
@@ -38,7 +33,7 @@ public class ClaimManager {
     }
 
     public boolean isClaimed(Chunk chunk) {
-        for(Claim claim: getClaims()) {
+        for(Claim claim: claims) {
             if(claim.getChunk() == chunk) {
                 return true;
             }
@@ -47,7 +42,7 @@ public class ClaimManager {
     }
 
     public boolean hasClaim(UUID uuid) {
-        for(Claim claim: getClaims()) {
+        for(Claim claim: claims) {
             if(claim.getOwner().equals(uuid)) {
                 return true;
             }
@@ -56,8 +51,8 @@ public class ClaimManager {
     }
 
     public Claim getClaimAt(Location location) {
-        for(Claim claim: getClaims()) {
-            if(location.getWorld().getChunkAt(location) == claim.getChunk()) {
+        for(Claim claim: claims) {
+            if(location.getWorld().getChunkAt(location).getX() == claim.getChunk().getX() && location.getWorld().getChunkAt(location).getZ() == claim.getChunk().getZ()) {
                 return claim;
             }
         }
@@ -66,7 +61,7 @@ public class ClaimManager {
 
     public List<Claim> getClaimsByUUID(UUID uuid) {
         List<Claim> claimList = new ArrayList<>();
-        for(Claim claim: getClaims()) {
+        for(Claim claim: claims) {
             if(claim.getOwner().equals(uuid)) {
                 claimList.add(claim);
             }
@@ -89,6 +84,8 @@ public class ClaimManager {
     }
 
     private void load() {
+        FileConfiguration claimsConfig = instance.getFileManager().getClaimsFile().getConfig();
+
         for(String string: claimsConfig.getStringList("List.claims")) {
             UUID owner = UUID.fromString(claimsConfig.getString("Claim." + string + ".owner"));
 
@@ -116,8 +113,11 @@ public class ClaimManager {
     }
 
     public void save() {
+        DataFile claimsFile = instance.getFileManager().getClaimsFile();
+        FileConfiguration claimsConfig = instance.getFileManager().getClaimsFile().getConfig();
+
         List<String> claimList = new ArrayList<>();
-        for(Claim claim: getClaims()) {
+        for(Claim claim: claims) {
             String owner = claim.getOwner().toString();
             String world = claim.getChunk().getWorld().getName();
             int x = claim.getChunk().getX();

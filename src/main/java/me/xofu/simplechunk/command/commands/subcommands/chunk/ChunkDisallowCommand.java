@@ -15,6 +15,7 @@ public class ChunkDisallowCommand extends SubCommand {
 
     public ChunkDisallowCommand(SimpleChunk instance) {
         super("disallow");
+        super.addAlias("untrust").addAlias("remove");
         this.instance = instance;
     }
 

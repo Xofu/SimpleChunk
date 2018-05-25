@@ -14,6 +14,7 @@ public class ChunkAllowCommand extends SubCommand {
 
     public ChunkAllowCommand(SimpleChunk instance) {
         super("allow");
+        super.addAlias("trust").addAlias("add");
         this.instance = instance;
     }
 
