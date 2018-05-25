@@ -36,7 +36,7 @@ public class BlockListener implements Listener {
         }
 
         Claim claim = instance.getClaimManager().getClaimAt(event.getBlock().getLocation());
-        if(Bukkit.getPlayer(claim.getOwner()) == player || claim.getAllowedPlayers().contains(player.getUniqueId())) {
+        if(claim.getOwner().equals(player.getUniqueId()) || claim.getAllowedPlayers().contains(player.getUniqueId())) {
             return;
         }
 
@@ -62,7 +62,7 @@ public class BlockListener implements Listener {
         }
 
         Claim claim = instance.getClaimManager().getClaimAt(event.getBlock().getLocation());
-        if(Bukkit.getPlayer(claim.getOwner()) == player || claim.getAllowedPlayers().contains(player.getUniqueId())) {
+        if(claim.getOwner().equals(player.getUniqueId()) || claim.getAllowedPlayers().contains(player.getUniqueId())) {
             return;
         }
 
@@ -88,7 +88,7 @@ public class BlockListener implements Listener {
 
         Claim claim = instance.getClaimManager().getClaimAt(event.getBlock().getLocation());
         if(event.getCause() == BlockIgniteEvent.IgniteCause.FLINT_AND_STEEL) {
-            if (Bukkit.getPlayer(claim.getOwner()) == player || claim.getAllowedPlayers().contains(player.getUniqueId())) {
+            if (claim.getOwner().equals(player.getUniqueId()) || claim.getAllowedPlayers().contains(player.getUniqueId())) {
                 return;
             }
         }

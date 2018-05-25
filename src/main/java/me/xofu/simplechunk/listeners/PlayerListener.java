@@ -3,21 +3,14 @@ package me.xofu.simplechunk.listeners;
 import me.xofu.simplechunk.SimpleChunk;
 import me.xofu.simplechunk.claim.Claim;
 import me.xofu.simplechunk.title.TitleMessage;
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.*;
-import org.bukkit.event.entity.EntityBreakDoorEvent;
-import org.bukkit.event.entity.EntityExplodeEvent;
 import org.bukkit.event.player.*;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class PlayerListener implements Listener {
 
@@ -45,7 +38,7 @@ public class PlayerListener implements Listener {
         }
 
         Claim claim = instance.getClaimManager().getClaimAt(event.getBlockClicked().getLocation());
-        if(Bukkit.getPlayer(claim.getOwner()) == player || claim.getAllowedPlayers().contains(player.getUniqueId())) {
+        if(claim.getOwner().equals(player.getUniqueId()) || claim.getAllowedPlayers().contains(player.getUniqueId())) {
             return;
         }
 
@@ -71,7 +64,7 @@ public class PlayerListener implements Listener {
         }
 
         Claim claim = instance.getClaimManager().getClaimAt(event.getBlockClicked().getLocation());
-        if(Bukkit.getPlayer(claim.getOwner()) == player || claim.getAllowedPlayers().contains(player.getUniqueId())) {
+        if(claim.getOwner().equals(player.getUniqueId()) || claim.getAllowedPlayers().contains(player.getUniqueId())) {
             return;
         }
 
@@ -163,7 +156,7 @@ public class PlayerListener implements Listener {
         }
 
         Claim claim = instance.getClaimManager().getClaimAt(block.getLocation());
-        if(Bukkit.getPlayer(claim.getOwner()) == player || claim.getAllowedPlayers().contains(player.getUniqueId())) {
+        if(claim.getOwner().equals(player.getUniqueId()) || claim.getAllowedPlayers().contains(player.getUniqueId())) {
             return;
         }
 
